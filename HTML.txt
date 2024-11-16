@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inclusive Daily Outfit Advice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            color: #4a90e2;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4a90e2;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .outfit-suggestions {
+            margin-top: 20px;
+            display: none;
+        }
+        .suggestion {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f1f1f1;
+        }
+        .suggestion img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+        .affirmation {
+            font-style: italic;
+            color: #e94e77;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Inclusive Daily Outfit Advice</h1>
+    <div class="container">
+        <div class="input-group">
+            <label for="skin-tone">Select Your Skin Tone:</label>
+            <select id="skin-tone">
+                <option value="light">Light</option>
+                <option value="medium">Medium</option>
+                <option value="dark">Dark</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="body-type">Select Your Body Type:</label>
+            <select id="body-type">
+                <option value="slim">Slim</option>
+                <option value="average">Average</option>
+                <option value="curvy">Curvy</option>
+                <option value="plus-size">Plus Size</option>
+            </select>
+        </div>
+        <button onclick="generateOutfit()">Get Outfit Suggestions</button>
+        <div class="outfit-suggestions" id="outfit-suggestions"></div>
+        <div class="affirmation" id="affirmation"></div>
+    </div>
+
+    <script>
+        function generateOutfit() {
+            const skinTone = document.getElementById('skin-tone').value;
+            const bodyType = document.getElementById('body-type').value;
+            const suggestionsDiv = document.getElementById('outfit-suggestions');
+            const affirmationDiv = document.getElementById('affirmation');
+            suggestionsDiv.innerHTML = ''; // Clear previous suggestions
+            affirmationDiv.innerHTML = ''; // Clear previous affirmation
+
+            let suggestions = [];
+
+            if (skinTone === 'light') {
+                suggestions.push({
+                    text: 'Pastel Blue Top + White Jeans',
+                    img: 'https://via.placeholder.com/300?text=Pastel+Blue+Top+%2B+White+Jeans' // Replace with actual Pinterest image URL
+                });
+                suggestions.push({
+                    text: 'Soft Pink Dress + Nude Sandals',
+                    img: 'https://via.placeholder.com/300?text=Soft+Pink+Dress+%2B+Nude+Sandals' // Replace with actual Pinterest image URL
+                });
+            } else if (skinTone === 'medium') {
+                suggestions.push({
+                    text: 'Royal Blue Shirt + Khaki Pants',
+                    img: 'https://via.placeholder.com/300?text=Royal+Blue+Shirt+%2B+Khaki+Pants' // Replace with actual Pinterest image URL
+                });
+                suggestions.push({
+                    text: 'Olive Green Jacket + Black Jeans',
+                    img: 'https://via.placeholder.com/300?text=Olive+Green+Jacket+%2B+Black+Jeans' // Replace with actual Pinterest image URL
+                });
+            } else if (skinTone === 'dark') {
+                suggestions.push({
+                    text: 'Bright Yellow Blouse + Dark Denim',
+                    img: 'https://via.placeholder.com/300?text=Bright+Yellow+Blouse+%2B+Dark+Denim' // Replace with actual Pinterest image URL
+                });
+                suggestions.push({
+                    text: 'Fuchsia Dress + Strappy Heels',
+                    img: 'https://via.placeholder.com/300?text=Fuchsia+Dress+%2B+Strappy+Heels' // Replace with actual Pinterest image URL
+                });
+            }
+
+            if (bodyType === 'slim') {
+                suggestions.push({
+                    text: 'Fitted Blazer + Tailored Trousers',
+                    img: 'https://via.placeholder.com/300?text=Fitted+Blazer+%2B+Tailored+Trousers' // Replace with actual Pinterest image URL
+                });
+            } else if (bodyType === 'average') {
+                suggestions.push({
+                    text: 'A-Line Skirt + Fitted Top',
+                    img: 'https://via.placeholder.com/300?text=A-Line+Skirt+%2B+Fitted+Top' // Replace with actual Pinterest image URL
+                });
+            } else if (bodyType === 'curvy') {
+                suggestions.push({
+                    text: 'Wrap Dress + Statement Belt',
+                    img: 'https://via.placeholder.com/300?text=Wrap+Dress+%2B+Statement+Belt' // Replace with actual Pinterest image URL
+                });
+            } else if (bodyType === 'plus-size') {
+                suggestions.push({
+                    text: 'Maxi Dress + Denim Jacket',
+                    img: 'https://via.placeholder.com/300?text=Maxi+Dress+%2B+Denim+Jacket' // Replace with actual Pinterest image URL
+                });
+            }
+
+            suggestions.forEach(suggestion => {
+                const div = document.createElement('div');
+                div.className = 'suggestion';
+                div.innerHTML = `<strong>${suggestion.text}</strong><br><img src="${suggestion.img}" alt="${suggestion.text}">`;
+                suggestionsDiv.appendChild(div);
+            });
+
+            suggestionsDiv.style.display = 'block'; // Show suggestions
+
+            // Positive affirmation
+            const affirmations = [
+                "You are beautiful just the way you are!",
+                "Confidence is your best outfit!",
+                "Embrace your unique style!",
+                "Every body is a good body!",
+                "Wear what makes you feel good!"
+            ];
+            const randomAffirmation = affirmations[Math.floor(Math.random() * affirmations.length)];
+            affirmationDiv.textContent = randomAffirmation;
+            affirmationDiv.style.display = 'block'; // Show affirmation
+        }
+    </script>
+</body>
+</html>
